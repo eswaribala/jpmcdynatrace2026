@@ -2,3 +2,7 @@
 fetch logs| sort timestamp desc| limit 100
 2. Only error logs
 fetch logs| filter loglevel == "ERROR"| sort timestamp desc| limit 100
+fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| fields timestamp, host.name, httpstatus, content| limit 50
+fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| filter httpstatus >= 400| summarize total = count(), by:{httpstatus}| sort total desc
+fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| fields timestamp, host.name, httpstatus, content| limit 50
+fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| filter httpstatus >= 400| summarize total = count(), by:{httpstatus}| sort total desc
