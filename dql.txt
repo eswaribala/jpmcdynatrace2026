@@ -7,3 +7,4 @@ fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| filter httpstat
 fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| fields timestamp, host.name, httpstatus, content| limit 50
 fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| filter httpstatus >= 400| summarize total = count(), by:{httpstatus}| sort total desc
 fetch logs| fields host.name| dedup host.name| sort host.name asc
+timeseries avg(dt.host.cpu.usage)
