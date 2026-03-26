@@ -15,3 +15,4 @@ timeseries rx = sum(dt.host.net.nic.bytesRx),           tx = sum(dt.host.net.ni
 timeseries cpu = avg(dt.host.cpu.usage), by:{dt.entity.host}| fieldsAdd host = entityName(dt.entity.host)
 fetch spans  | fields timestamp, http.method, http.url, http.status_code,duration,service.name| sort timestamp desc
 fetch spans | filter http.response.status_code == 200 | fields trace.id,dt.service.name,span.events,duration
+fetch spans | filter http.response.status_code == 200 | filter http.request.method == "GET" | filter http.route == "/patients/v1.0"  | fields trace.id,client.ip, dt.service.name,span.events,duration
