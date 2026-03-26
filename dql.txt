@@ -27,3 +27,6 @@ fetch logs | summarize count(),by: (dt.system.bucket)
 fetch logs, scanLimitGBytes: 20
 | filter host.name == $Host
 | makeTimeseries count(), by:{host.name}
+
+=====================
+timeseries from:now() - 2h, to:now(), by:{host.name}, avg_cpu = avg(dt.host.cpu.usage) | filter host.name == $Host
