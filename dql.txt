@@ -2,10 +2,12 @@
 fetch logs| sort timestamp desc| limit 100
 2. Only error logs
 fetch logs| filter loglevel == "ERROR"| sort timestamp desc| limit 100
-fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| fields timestamp, host.name, httpstatus, content| limit 50
-fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| filter httpstatus >= 400| summarize total = count(), by:{httpstatus}| sort total desc
-fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| fields timestamp, host.name, httpstatus, content| limit 50
-fetch logs| parse content, "LD 'HTTP_STATUS ' INT:httpstatus"| filter httpstatus >= 400| summarize total = count(), by:{httpstatus}| sort total desc
+fetch spans, from:now() - 8h
+| filter span.kind == "client"
+| fieldsKeep http.request.method, url.full, url.path, url.query, http.route, client.ip, timestamp
+
+
+
 fetch logs| fields host.name| dedup host.name| sort host.name asc
 timeseries avg(dt.host.cpu.usage)
 timeseries cpu = avg(dt.host.cpu.usage), by:{dt.entity.host}
