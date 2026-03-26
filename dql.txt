@@ -1,0 +1,4 @@
+1. Latest 100 logs
+fetch logs| sort timestamp desc| limit 100
+2. Only error logs
+fetch logs| filter loglevel == "ERROR"| sort timestamp desc| limit 100
