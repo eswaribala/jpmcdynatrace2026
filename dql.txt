@@ -22,3 +22,6 @@ fetch logs | summarize count(),by: (dt.system.bucket)
 |fields Bucket = dt.system.bucket
 |sort Bucket desc
 ================
+fetch logs, scanLimitGBytes: 20
+| filter host.name == $Host
+| makeTimeseries count(), by:{host.name}
