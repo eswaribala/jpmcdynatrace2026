@@ -33,3 +33,7 @@ timeseries from:now() - 2h, to:now(), by:{host.name}, avg_cpu = avg(dt.host.cpu.
 
 
 timeseries cpu = avg(dt.host.cpu.usage), by:{dt.smartscape_source.id}, from:-2h
+
+
+correlation query
+timeseries from:now() - 2h, by:{dt.entity.host}, {cpu_usage = avg(dt.host.cpu.usage), memory_usage = avg(dt.host.memory.usage)}
