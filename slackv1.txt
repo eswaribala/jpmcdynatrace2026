@@ -1,0 +1,87 @@
+web hook url
+
+bot token
+https://api.slack.com/apps
+
+Click Create New App
+Choose From scratch
+Give name + workspace
+
+
+APP ID
+Client ID
+
+Secret
+
+Signing Secret
+
+Verification token
+
+
+
+Go to:
+
+OAuth & Permissions → Bot Token Scopes
+
+Add these scopes (minimum):
+
+chat:write
+chat:write.public
+channels:read
+groups:read ✅ (IMPORTANT)
+files:write (optional)
+files:read (optional)
+
+
+OAuth scope
+Description
+ 
+Yes
+
+channels:manage
+Manage public channels that "dynapp" has been added to and create new ones
+Yes
+
+channels:read
+View basic information about public channels in a workspace
+Yes
+
+chat:write
+Send messages as @dynapp
+Yes
+
+chat:write.public
+Send messages to channels that @dynapp isn’t a member of
+Yes
+
+conversations.connect:manage
+Allows "dynapp" to manage Slack Connect channels
+Yes
+
+files:read
+View files shared in channels and conversations that "dynapp" has been added to
+Yes
+
+files:write
+Upload, edit and delete files as "dynapp"
+
+groups:read
+View basic information about private channels that "dynapp" has been added to
+Yes
+
+groups:write
+Manage private channels that "dynapp" has been added to and create new ones
+
+
+3. Install App to Workspace
+Click Install App to Workspace
+Authorize it
+
+OAuth Token
+Bot User Token
+
+
+
+
+run command in test channel text box
+/invite @dynapp
