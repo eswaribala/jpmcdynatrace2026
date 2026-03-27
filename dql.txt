@@ -30,3 +30,6 @@ fetch logs, scanLimitGBytes: 20
 
 =====================
 timeseries from:now() - 2h, to:now(), by:{host.name}, avg_cpu = avg(dt.host.cpu.usage) | filter host.name == $Host
+
+
+timeseries cpu = avg(dt.host.cpu.usage), by:{dt.smartscape_source.id}, from:-2h
